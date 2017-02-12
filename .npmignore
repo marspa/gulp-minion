@@ -2,7 +2,6 @@
 coverage/
 node_modules/
 src/
-target/test/
 test/
 
 .gitignore

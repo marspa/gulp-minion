@@ -2,7 +2,7 @@ import iocContainer from '../src/configuration';
 import Task from '../src/task';
 import TaskFactory from '../src/taskFactory';
 
-const taskFactory: TaskFactory = iocContainer.get<TaskFactory>(TaskFactory);
+const taskFactory: TaskFactory = iocContainer.get(TaskFactory);
 
 export const range = (maxExcluded: number): number[] =>  {
   return [...Array(maxExcluded).keys()];

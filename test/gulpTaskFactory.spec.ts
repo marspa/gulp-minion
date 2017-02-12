@@ -8,7 +8,7 @@ import { TASKS, TASKS_WITH_PARAMETER } from './utils';
 
 describe('Construct a gulp task', function () {
 
-  const gulpTaskFactory: GulpTaskFactory = iocContainer.get<GulpTaskFactory>(GulpTaskFactory);
+  const gulpTaskFactory: GulpTaskFactory = iocContainer.get(GulpTaskFactory);
 
   let sinonSandbox: SinonSandbox;
   let gulpTaskSpy: SinonSpy;
