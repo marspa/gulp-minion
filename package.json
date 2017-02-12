@@ -1,5 +1,5 @@
 {
-  "name": "gulp-task-constructor",
+  "name": "task-constructor",
   "version": "0.0.2",
   "main": "./target/index.js",
   "types": "./target/index.d.ts",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marspa/gulp-task-constructor.git"
+    "url": "https://github.com/marspa/task-constructor.git"
   },
   "scripts": {
     "build": "yarn run ci && yarn run compile",

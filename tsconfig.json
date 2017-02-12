@@ -2,11 +2,15 @@
   "compilerOptions": {
     "module": "commonjs",
     "preserveConstEnums": true,
-    "sourceMap": true,
     "target": "ES6",
     "outDir": "target",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "alwaysStrict": true
-  }
+    "alwaysStrict": true,
+    "declaration": true
+  },
+  "include": [
+    "./index.ts",
+    "./src/**/*"
+  ]
 }

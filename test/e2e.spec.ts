@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { DynamicGulpfileBuilder, iocContainer, Task, TaskFactory, TaskRunner } from '../index';
+import { TaskConstructor, iocContainer, Task, TaskFactory, TaskRunner } from '../index';
 import { range, TASK_NAME } from './utils';
 
 describe('Execute tasks', function () {
@@ -9,7 +9,7 @@ describe('Execute tasks', function () {
 
   const taskFactory: TaskFactory = iocContainer.get(TaskFactory);
   const taskRunner: TaskRunner = iocContainer.get(TaskRunner);
-  const dynamicGulpfileBuilder: DynamicGulpfileBuilder = iocContainer.get(DynamicGulpfileBuilder);
+  const taskConstructor: TaskConstructor = iocContainer.get(TaskConstructor);
 
   const executeTaskMessage = (index: number): string => {
     return prefixMessage('executing synchronous task #' + index, index);
@@ -64,7 +64,7 @@ describe('Execute tasks', function () {
   it('runs a single task', function (done) {
     const expectedTasks: string[] = [executeTaskMessage(0)];
 
-    const taskToExecute: string = dynamicGulpfileBuilder.constructGulpTask(TASKS[0]);
+    const taskToExecute: string = taskConstructor.constructGulpTask(TASKS[0]);
 
     taskRunner.execute(taskToExecute).then(() => {
       expect(actualTasks).to.deep.equal(expectedTasks);
@@ -77,7 +77,7 @@ describe('Execute tasks', function () {
       return executeTaskMessage(index);
     });
 
-    const taskToExecute: string = dynamicGulpfileBuilder.constructMultipleGulpTasks(TASK_NAME, TASKS);
+    const taskToExecute: string = taskConstructor.constructMultipleGulpTasks(TASK_NAME, TASKS);
 
     taskRunner.execute(taskToExecute).then(() => {
       expect(actualTasks).to.deep.equal(expectedTasks);
@@ -93,7 +93,7 @@ describe('Execute tasks', function () {
       expectedTasks.push(stopTaskMessage(index));
     });
 
-    const taskToExecute: string = dynamicGulpfileBuilder.constructMultipleGulpTasks(TASK_NAME, TASKS_ASYNC);
+    const taskToExecute: string = taskConstructor.constructMultipleGulpTasks(TASK_NAME, TASKS_ASYNC);
 
     taskRunner.execute(taskToExecute).then(() => {
       expect(actualTasks).to.deep.equal(expectedTasks);
@@ -110,9 +110,9 @@ describe('Execute tasks', function () {
     const taskNames: string[] = TASKS_ASYNC.map((task: Task<number>) => {
       return task.id;
     });
-    dynamicGulpfileBuilder.constructMultipleGulpTasks(TASK_NAME, TASKS_ASYNC);
+    taskConstructor.constructMultipleGulpTasks(TASK_NAME, TASKS_ASYNC);
 
-    const taskToExecute: string = dynamicGulpfileBuilder.constructSequentialGulpTask('sequential-' + TASK_NAME, taskNames);
+    const taskToExecute: string = taskConstructor.constructSequentialGulpTask('sequential-' + TASK_NAME, taskNames);
 
     taskRunner.execute(taskToExecute).then(() => {
       expect(actualTasks).to.deep.equal(expectedTasks);

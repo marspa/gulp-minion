@@ -13,7 +13,7 @@ import {
 
 describe('Factory methods for task creation', function () {
   const UUID_REG_EXP: RegExp = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{10}/;
-  const taskFactory: TaskFactory = iocContainer.get<TaskFactory>(TaskFactory);
+  const taskFactory: TaskFactory = iocContainer.get(TaskFactory);
 
   let sinonSandbox: SinonSandbox;
 
