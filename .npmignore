@@ -1,0 +1,13 @@
+.nyc_output/
+coverage/
+node_modules/
+src/
+target/test/
+test/
+
+.gitignore
+.npmignore
+mocha.opts
+tsconfig.json
+tslint.json
+yarn.lock
