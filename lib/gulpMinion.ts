@@ -6,7 +6,7 @@ import GulpTaskFactory from './gulpTaskFactory';
 import Task from './task';
 
 @injectable()
-export default class TaskConstructor {
+export default class GulpMinion {
   public constructor(private gulpTaskFactory: GulpTaskFactory) {
   }
 
@@ -26,7 +26,7 @@ export default class TaskConstructor {
   }
 
   public constructParallelGulpTask(name: string, taskNames: string[], concurrencyLimit: number = Number.MAX_SAFE_INTEGER): string {
-    const taskNamesSplittedInChunks: string[][] = TaskConstructor.chunk(taskNames, concurrencyLimit);
+    const taskNamesSplittedInChunks: string[][] = GulpMinion.chunk(taskNames, concurrencyLimit);
     gulp.task(name, (callback) => {
       runSequence(...taskNamesSplittedInChunks, callback);
     });

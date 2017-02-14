@@ -1,6 +1,6 @@
-import iocContainer from '../src/configuration';
-import Task from '../src/task';
-import TaskFactory from '../src/taskFactory';
+import iocContainer from '../lib/configuration';
+import Task from '../lib/task';
+import TaskFactory from '../lib/taskFactory';
 
 const taskFactory: TaskFactory = iocContainer.get(TaskFactory);
 

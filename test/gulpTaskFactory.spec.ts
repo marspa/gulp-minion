@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import * as gulp from 'gulp';
 import { sandbox, SinonSandbox, SinonSpy } from 'sinon';
-import iocContainer from '../src/configuration';
-import Task from '../src/task';
-import GulpTaskFactory from '../src/gulpTaskFactory';
+import iocContainer from '../lib/configuration';
+import Task from '../lib/task';
+import GulpTaskFactory from '../lib/gulpTaskFactory';
 import { TASKS, TASKS_WITH_PARAMETER } from './utils';
 
 describe('Construct a gulp task', function () {

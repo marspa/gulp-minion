@@ -1,8 +1,8 @@
-import TaskConstructor from './src/taskConstructor';
-import GulpTaskFactory from './src/gulpTaskFactory';
-import iocContainer from './src/configuration';
-import Task from './src/task';
-import TaskFactory from './src/taskFactory';
-import TaskRunner from './src/taskRunner';
+import GulpMinion from './lib/gulpMinion';
+import GulpTaskFactory from './lib/gulpTaskFactory';
+import iocContainer from './lib/configuration';
+import Task from './lib/task';
+import TaskFactory from './lib/taskFactory';
+import TaskRunner from './lib/taskRunner';
 
-export { GulpTaskFactory, iocContainer, Task, TaskConstructor, TaskFactory, TaskRunner };
+export { GulpMinion, GulpTaskFactory, iocContainer, Task, TaskFactory, TaskRunner };
