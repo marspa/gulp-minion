@@ -3,7 +3,7 @@
     "module": "commonjs",
     "preserveConstEnums": true,
     "target": "ES6",
-    "outDir": "target",
+    "outDir": "build",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "alwaysStrict": true,
@@ -11,6 +11,6 @@
   },
   "include": [
     "./index.ts",
-    "./src/**/*"
+    "./lib/**/*"
   ]
 }

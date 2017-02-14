@@ -1,27 +1,27 @@
 {
-  "name": "task-constructor",
-  "version": "0.0.2",
-  "main": "./target/index.js",
-  "types": "./target/index.d.ts",
+  "name": "gulp-minion",
+  "version": "0.0.1",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "author": "Markus Spanier <markus.spanier@tngtech.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marspa/task-constructor.git"
+    "url": "https://github.com/marspa/gulp-minion.git"
   },
   "scripts": {
     "build": "yarn run ci && yarn run compile",
     "ci": "yarn run lint && yarn run test",
-    "compile": "rimraf target && tsc",
-    "clean": "yarn run clean:coverage && rimraf node_modules target",
+    "compile": "rimraf build && tsc",
+    "clean": "yarn run clean:coverage && rimraf node_modules build",
     "clean:coverage": "rimraf coverage .nyc_output",
-    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "lint": "tslint lib/**/*.ts test/**/*.ts",
     "test": "yarn run clean:coverage && nyc mocha --opts mocha.opts",
     "test:watch": "yarn test -- --watch"
   },
   "nyc": {
     "include": [
-      "src/**/*.ts"
+      "lib/**/*.ts"
     ],
     "extension": [
       ".ts"

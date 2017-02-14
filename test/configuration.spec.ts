@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import iocContainer from '../src/configuration';
-import GulpTaskFactory from '../src/gulpTaskFactory';
-import TaskConstructor from '../src/taskConstructor';
-import TaskFactory from '../src/taskFactory';
-import TaskRunner from '../src/taskRunner';
+import iocContainer from '../lib/configuration';
+import GulpMinion from '../lib/gulpMinion';
+import GulpTaskFactory from '../lib/gulpTaskFactory';
+import TaskFactory from '../lib/taskFactory';
+import TaskRunner from '../lib/taskRunner';
 
 describe('Setup IoC container', function () {
   it('contains all objects without dependencies', function () {
@@ -21,9 +21,9 @@ describe('Setup IoC container', function () {
   });
 
   it('contains all objects with dependencies', function () {
-    const taskConstructor: TaskConstructor = iocContainer.get(TaskConstructor);
+    const gulpMinion: GulpMinion = iocContainer.get(GulpMinion);
 
-    expect(taskConstructor).not.to.equal(null);
-    expect(taskConstructor).to.be.an.instanceof(TaskConstructor);
+    expect(gulpMinion).not.to.equal(null);
+    expect(gulpMinion).to.be.an.instanceof(GulpMinion);
   });
 });

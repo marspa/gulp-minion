@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { sandbox, SinonSandbox } from 'sinon';
-import iocContainer from '../src/configuration';
-import Task from '../src/task';
-import TaskFactory from '../src/taskFactory';
+import iocContainer from '../lib/configuration';
+import Task from '../lib/task';
+import TaskFactory from '../lib/taskFactory';
 import {
   emptyFunctionWithParameter,
   FUNCTION_PARAMETER,
