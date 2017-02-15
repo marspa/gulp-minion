@@ -11,12 +11,13 @@
   },
   "scripts": {
     "build": "yarn run ci && yarn run compile",
-    "ci": "yarn run lint && yarn run test",
     "compile": "rimraf build && tsc",
     "clean": "yarn run clean:coverage && rimraf node_modules build",
     "clean:coverage": "rimraf coverage .nyc_output",
     "lint": "tslint lib/**/*.ts test/**/*.ts",
-    "test": "yarn run clean:coverage && nyc mocha --opts mocha.opts",
+    "mocha": "nyc mocha --opts mocha.opts",
+    "pre:test": "yarn run clean:coverage",
+    "test": "yarn run lint && yarn run mocha",
     "test:watch": "yarn test -- --watch"
   },
   "nyc": {
