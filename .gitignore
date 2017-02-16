@@ -108,3 +108,4 @@ jspm_packages
 
 ### Project specific ignores ###
 build/
+.coveralls.yml
