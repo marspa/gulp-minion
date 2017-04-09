@@ -14,18 +14,18 @@ export default class GulpMinion {
     return this.gulpTaskFactory.constructGulpTask(task);
   }
 
-  public constructMultipleGulpTasks<T>(name: string, tasks: Task<T>[], concurrencyLimit?: number): string {
+  public constructParallelGulpTasks<T>(name: string, tasks: Task<T>[], concurrencyLimit: number = Number.MAX_SAFE_INTEGER): string {
     const generatedTasks: string[] = tasks.map((task: Task<T>) => {
       return this.gulpTaskFactory.constructGulpTask(task);
     });
-    return this.constructParallelGulpTask(name, generatedTasks, concurrencyLimit);
+    return this.constructMultipleGulpTasks(name, generatedTasks, concurrencyLimit);
   }
 
   public constructSequentialGulpTask(name: string, taskNames: string[]): string {
-    return this.constructParallelGulpTask(name, taskNames, 1);
+    return this.constructMultipleGulpTasks(name, taskNames, 1);
   }
 
-  public constructParallelGulpTask(name: string, taskNames: string[], concurrencyLimit: number = Number.MAX_SAFE_INTEGER): string {
+  private constructMultipleGulpTasks(name: string, taskNames: string[], concurrencyLimit: number): string {
     const taskNamesSplittedInChunks: string[][] = GulpMinion.chunk(taskNames, concurrencyLimit);
     gulp.task(name, (callback) => {
       runSequence(...taskNamesSplittedInChunks, callback);

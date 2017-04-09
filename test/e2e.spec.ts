@@ -31,7 +31,6 @@ describe('Execute tasks', function () {
     return prefix + message;
   };
 
-
   const storeTaskNumber = (index: number): Promise<void> => {
     actualTasks.push(executeTaskMessage(index));
     return Promise.resolve();
@@ -77,7 +76,7 @@ describe('Execute tasks', function () {
       return executeTaskMessage(index);
     });
 
-    const taskToExecute: string = gulpMinion.constructMultipleGulpTasks(TASK_NAME, TASKS);
+    const taskToExecute: string = gulpMinion.constructParallelGulpTasks(TASK_NAME, TASKS);
 
     taskRunner.execute(taskToExecute).then(() => {
       expect(actualTasks).to.deep.equal(expectedTasks);
@@ -93,7 +92,7 @@ describe('Execute tasks', function () {
       expectedTasks.push(stopTaskMessage(index));
     });
 
-    const taskToExecute: string = gulpMinion.constructMultipleGulpTasks(TASK_NAME, TASKS_ASYNC);
+    const taskToExecute: string = gulpMinion.constructParallelGulpTasks(TASK_NAME, TASKS_ASYNC);
 
     taskRunner.execute(taskToExecute).then(() => {
       expect(actualTasks).to.deep.equal(expectedTasks);
@@ -110,7 +109,7 @@ describe('Execute tasks', function () {
     const taskNames: string[] = TASKS_ASYNC.map((task: Task<number>) => {
       return task.id;
     });
-    gulpMinion.constructMultipleGulpTasks(TASK_NAME, TASKS_ASYNC);
+    gulpMinion.constructParallelGulpTasks(TASK_NAME, TASKS_ASYNC);
 
     const taskToExecute: string = gulpMinion.constructSequentialGulpTask('sequential-' + TASK_NAME, taskNames);
 

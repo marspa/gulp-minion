@@ -1,6 +1,6 @@
 {
   "name": "gulp-minion",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "author": "Markus Spanier <markus.spanier@tngtech.com>",
@@ -10,7 +10,7 @@
     "url": "https://github.com/marspa/gulp-minion.git"
   },
   "scripts": {
-    "build": "yarn run ci && yarn run compile",
+    "build": "yarn test && yarn run compile",
     "compile": "rimraf build && tsc",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "clean": "yarn run clean:coverage && rimraf node_modules build",
@@ -39,28 +39,28 @@
   },
   "dependencies": {
     "gulp": "^3.9.1",
-    "inversify": "^3.1.0",
-    "reflect-metadata": "^0.1.9",
+    "inversify": "^3.3.0",
+    "reflect-metadata": "^0.1.10",
     "run-sequence": "^1.2.2",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
-    "@types/gulp": "^3.8.32",
+    "@types/gulp": "^4.0.2",
     "@types/mocha": "^2.2.35",
-    "@types/node": "^6.0.55",
-    "@types/run-sequence": "^0.0.28",
-    "@types/sinon": "^1.16.34",
+    "@types/node": "^7.0.12",
+    "@types/run-sequence": "^0.0.29",
+    "@types/sinon": "^2.1.2",
     "chai": "^3.5.0",
     "coveralls": "^2.11.16",
     "mocha": "^3.2.0",
     "mocha-lcov-reporter": "^1.2.0",
-    "mocha-sinon": "^1.1.6",
+    "mocha-sinon": "^2.0.0",
     "nyc": "^10.0.0",
     "rimraf": "^2.5.4",
-    "sinon": "^1.17.7",
-    "ts-node": "^2.0.0",
-    "tslint": "^4.2.0",
-    "typescript": "^2.1.4"
+    "sinon": "^2.1.0",
+    "ts-node": "^3.0.2",
+    "tslint": "^5.0.0",
+    "typescript": "^2.2.2"
   }
 }

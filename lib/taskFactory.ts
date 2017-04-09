@@ -7,9 +7,9 @@ import Task from './task';
 export default class TaskFactory {
   public getTask<T>(fn: (parameter: T) => Promise<void>, parameter: T, name: string = uuid()): Task<T> {
     return new Task<T>(name, fn, parameter);
-  };
+  }
 
   public getTaskWithoutParameter(fn: () => Promise<void>, name: string = uuid()): Task<void> {
     return this.getTask(fn, undefined, name);
-  };
+  }
 }
