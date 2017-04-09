@@ -33,7 +33,7 @@ describe('Construct tasks', function () {
   });
 
   it('constructs individual single tasks from a given array', function () {
-    const actualTaskName: string = gulpMinion.constructMultipleGulpTasks(TASK_NAME, TASKS);
+    const actualTaskName: string = gulpMinion.constructParallelGulpTasks(TASK_NAME, TASKS);
 
     expect(actualTaskName).to.equal(TASK_NAME);
     TASKS.forEach((task: Task<void>) => {
@@ -44,7 +44,7 @@ describe('Construct tasks', function () {
 
   it('constructs multiple parallel tasks in given chunks', function () {
     const concurrencyLimit: number = 3;
-    const actualTaskName: string = gulpMinion.constructMultipleGulpTasks(TASK_NAME, TASKS, concurrencyLimit);
+    const actualTaskName: string = gulpMinion.constructParallelGulpTasks(TASK_NAME, TASKS, concurrencyLimit);
 
     expect(actualTaskName).to.equal(TASK_NAME);
     TASKS.forEach((task: Task<void>) => {
@@ -57,7 +57,7 @@ describe('Construct tasks', function () {
     const taskNames: string[] = TASKS.map((task: Task<void>) => {
       return task.id;
     });
-    gulpMinion.constructMultipleGulpTasks('unused-' + TASK_NAME, TASKS);
+    gulpMinion.constructParallelGulpTasks('unused-' + TASK_NAME, TASKS);
 
     const actualTaskName: string = gulpMinion.constructSequentialGulpTask(TASK_NAME, taskNames);
 
